@@ -1,175 +1,289 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import {
-    MoveRight, Shield, ShoppingCart, PieChart, Users, Layers, TrendingUp, Monitor, Building2
-} from 'lucide-react';
-import { Badge } from '../ui/Badge';
+import { MoveRight, Shield, TrendingUp, Building2 } from 'lucide-react';
 
-const departments = [
-    { icon: ShoppingCart, name: 'Procurement', mapped: 'procurement', value: '$40M/Yr' },
-    { icon: PieChart, name: 'Finance', mapped: 'finance', value: '$35M/Yr' },
-    { icon: Shield, name: 'Compliance', mapped: 'compliance', value: '$18M/Yr' },
-    { icon: Users, name: 'HR', mapped: 'hr', value: '$15M/Yr' },
-    { icon: Layers, name: 'Operations', mapped: 'operations', value: '$22M/Yr' },
-    { icon: TrendingUp, name: 'Sales', mapped: 'sales', value: '$17M/Yr' },
-    { icon: Monitor, name: 'IT', mapped: 'it', value: '$11M/Yr' }
+/* ─── Mosaic tile data — matches the design exactly ─── */
+const mosaicTiles = [
+  // Row 1: Finance (wide 8/12) + HR (narrow 4/12)
+  { name: 'Finance', mapped: 'Finance', gridCol: '1 / span 8', gridRow: '1', height: '400px', bg: '#f6f5f3', bgHover: '#efeee9', bgImage: 'radial-gradient(#cfc4c5 1.5px, transparent 1.5px)', bgSize: '24px 24px', textColor: '#1a1c1c' },
+  { name: 'Human Resources', mapped: 'Human Resources', gridCol: '9 / span 4', gridRow: '1', height: '400px', bg: '#f9f9f9', bgHover: '#f0f0f0', bgImage: 'linear-gradient(to right, #e8e8e8 1px, transparent 1px), linear-gradient(to bottom, #e8e8e8 1px, transparent 1px)', bgSize: '40px 40px', textColor: '#1a1c1c' },
+  // Row 2: Supply Chain + Sales + Operations (4+4+4)
+  { name: 'Supply Chain', mapped: 'Supply Chain Management', gridCol: '1 / span 4', gridRow: '2', height: '300px', bg: '#f6f5f3', bgHover: '#efeee9', textColor: '#1a1c1c' },
+  { name: 'Sales', mapped: 'Sales', gridCol: '5 / span 4', gridRow: '2', height: '300px', bg: '#f6f5f3', bgHover: '#efeee9', textColor: '#1a1c1c' },
+  { name: 'Operations', mapped: 'Procurement & Sourcing', gridCol: '9 / span 4', gridRow: '2', height: '300px', bg: '#f9f9f9', bgHover: '#f0f0f0', bgImage: 'linear-gradient(to right, #e8e8e8 1px, transparent 1px), linear-gradient(to bottom, #e8e8e8 1px, transparent 1px)', bgSize: '40px 40px', textColor: '#1a1c1c' },
+  // Row 3: IT (5/12) + Strategy (7/12)
+  { name: 'IT', mapped: 'Research & Development / Product Management', gridCol: '1 / span 5', gridRow: '3', height: '350px', bg: '#f6f5f3', bgHover: '#efeee9', textColor: '#1a1c1c' },
+  { name: 'Strategy', mapped: 'General Management / Executive Leadership', gridCol: '6 / span 7', gridRow: '3', height: '350px', bg: '#1a1c1c', bgHover: '#222525', textColor: '#ffffff' },
 ];
 
 interface HeroSectionProps {
-    onDepartmentClick?: (dept: string) => void;
+  onDepartmentClick?: (dept: string) => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onDepartmentClick }) => {
-    return (
-        <section
-            style={{
-                paddingTop: 'var(--spacing-16)',
-                paddingBottom: 'var(--spacing-16)',
-                position: 'relative',
-                overflow: 'hidden'
-            }}
-        >
-            {/* Background glow effects */}
+  const [hoveredTile, setHoveredTile] = useState<string | null>(null);
+
+  return (
+    <>
+      {/* ─── Hero Banner ─── */}
+      <section style={{
+        minHeight: '85vh',
+        background: '#1a1c1c',
+        color: '#ffffff',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '8rem 4rem',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* Right abstract overlay */}
+        <div style={{
+          position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)',
+          width: '50%', height: '120%', opacity: 0.12, pointerEvents: 'none',
+          background: 'radial-gradient(ellipse at right center, rgba(255,255,255,0.3) 0%, transparent 60%)',
+        }} />
+        <div style={{
+          position: 'absolute', right: 0, top: 0, width: '45%', height: '100%',
+          opacity: 0.06, pointerEvents: 'none',
+          backgroundImage: `repeating-linear-gradient(
+            0deg, transparent, transparent 60px,
+            rgba(255,255,255,0.15) 60px, rgba(255,255,255,0.15) 61px
+          ), repeating-linear-gradient(
+            90deg, transparent, transparent 60px,
+            rgba(255,255,255,0.15) 60px, rgba(255,255,255,0.15) 61px
+          )`,
+        }} />
+
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Eyebrow */}
             <div style={{
-                position: 'absolute', top: '-10%', left: '20%', width: '50vw', height: '50vw',
-                background: 'radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, rgba(2, 8, 19, 0) 70%)',
-                zIndex: 0, pointerEvents: 'none'
-            }} />
-
-            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                <div className="flex-col gap-12" style={{ alignItems: 'center' }}>
-                    
-                    {/* Top Content */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto', marginBottom: 'var(--spacing-12)' }}
-                    >
-                        <Badge variant="blue" pulse className="mb-4" style={{ marginBottom: 'var(--spacing-4)' }}>
-                            DPIIT-Recognized Enterprise AI Platform
-                        </Badge>
-                        <h1 style={{ fontSize: 'var(--font-size-5xl)', letterSpacing: '-0.02em', marginBottom: 'var(--spacing-4)' }}>
-                            AI Agents for Enterprise Functions <br/>
-                            <span className="text-gradient" style={{ fontSize: 'var(--font-size-4xl)' }}>- Outputs $150M+ Annual Value</span>
-                        </h1>
-                        <p style={{ fontSize: 'var(--font-size-xl)', color: 'var(--color-text-muted)', marginBottom: 'var(--spacing-8)', lineHeight: 1.5 }}>
-                            Stop manual processes. Our autonomous agentic platform deploys 23 core agents that work 24/7. Proven ROI in 50+ enterprises across North America, EMEA, and APAC.
-                        </p>
-
-                        <div style={{ display: 'flex', gap: 'var(--spacing-4)', justifyContent: 'center' }}>
-                            <a href="#functions" className="btn btn-primary" style={{ padding: '0.85rem 2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', fontSize: 'var(--font-size-lg)' }}>
-                                Find Your AI Agents
-                                <MoveRight size={20} />
-                            </a>
-                            <a href="#roi" className="btn btn-secondary" style={{ padding: '0.85rem 2rem', display: 'flex', alignItems: 'center', textDecoration: 'none', fontSize: 'var(--font-size-lg)' }}>
-                                See Full ROI Breakdown
-                            </a>
-                        </div>
-                    </motion.div>
-
-                    {/* 7-Card Function Navigator Grid */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        style={{ marginBottom: 'var(--spacing-16)' }}
-                    >
-                        <div style={{ 
-                            display: 'grid', 
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', 
-                            gap: 'var(--spacing-4)',
-                            maxWidth: '1100px',
-                            margin: '0 auto'
-                        }}>
-                            {departments.map((dept) => {
-                                const Icon = dept.icon;
-                                return (
-                                    <motion.div
-                                        key={dept.name}
-                                        className="glass-panel"
-                                        onClick={() => onDepartmentClick && onDepartmentClick(dept.mapped)}
-                                        whileHover={{ y: -5, borderColor: 'var(--color-secondary)', boxShadow: 'var(--shadow-glow)' }}
-                                        style={{
-                                            padding: 'var(--spacing-6) var(--spacing-4)',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                            textAlign: 'center',
-                                            gap: 'var(--spacing-3)',
-                                            cursor: 'pointer',
-                                            background: 'rgba(15, 30, 56, 0.4)',
-                                            border: '1px solid rgba(0, 212, 255, 0.15)',
-                                            borderRadius: 'var(--radius-lg)'
-                                        }}
-                                    >
-                                        <div style={{ 
-                                            width: '48px', height: '48px', 
-                                            borderRadius: '50%', 
-                                            background: 'rgba(0, 212, 255, 0.1)', 
-                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                            color: 'var(--color-secondary)'
-                                        }}>
-                                            <Icon size={24} />
-                                        </div>
-                                        <h3 style={{ fontSize: 'var(--font-size-base)', fontWeight: 700, color: '#fff' }}>{dept.name}</h3>
-                                        <div style={{ color: '#10B981', fontSize: 'var(--font-size-sm)', fontWeight: 600 }}>{dept.value}</div>
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-                    </motion.div>
-
-                    {/* Trust Bar Directly Below Hero */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        style={{
-                            maxWidth: '1000px',
-                            margin: '0 auto',
-                            padding: 'var(--spacing-6)',
-                            background: 'rgba(255, 255, 255, 0.03)',
-                            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-                            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            gap: 'var(--spacing-8)',
-                            flexWrap: 'wrap'
-                        }}
-                    >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
-                            <Building2 size={32} style={{ color: 'var(--color-text-muted)' }} />
-                            <div>
-                                <div style={{ color: '#fff', fontWeight: 700, fontSize: 'var(--font-size-lg)' }}>50+ Enterprise Clients</div>
-                                <div style={{ color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)' }}>Transforming operations globally</div>
-                            </div>
-                        </div>
-
-                        <div style={{ width: '1px', height: '40px', background: 'rgba(255, 255, 255, 0.1)' }}></div>
-
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
-                            <TrendingUp size={32} style={{ color: 'var(--color-success)' }} />
-                            <div>
-                                <div style={{ color: '#fff', fontWeight: 700, fontSize: 'var(--font-size-lg)' }}>$5.5B+</div>
-                                <div style={{ color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)' }}>Combined Client Revenue Protected</div>
-                            </div>
-                        </div>
-                        
-                        <div style={{ width: '1px', height: '40px', background: 'rgba(255, 255, 255, 0.1)' }}></div>
-                        
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)' }}>
-                            <Shield size={32} style={{ color: 'var(--color-secondary)' }} />
-                            <div>
-                                <div style={{ color: '#fff', fontWeight: 700, fontSize: 'var(--font-size-lg)' }}>ISO 27001 / SOC 2</div>
-                                <div style={{ color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)' }}>Certified Security</div>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                </div>
+              fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.22em',
+              textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)',
+              marginBottom: '2rem', fontFamily: 'Inter, sans-serif'
+            }}>
+              SAI · Agentic AI Platform
             </div>
-        </section>
-    );
+
+            <h1 style={{
+              fontFamily: 'Newsreader, Georgia, serif',
+              fontSize: 'clamp(2.8rem, 5vw, 4.5rem)',
+              fontWeight: 400,
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              color: '#ffffff',
+              marginBottom: '2rem',
+              maxWidth: '800px',
+            }}>
+              The Future of Enterprise Intelligence
+            </h1>
+
+            <p style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '1.125rem',
+              lineHeight: 1.65,
+              color: 'rgba(255,255,255,0.65)',
+              maxWidth: '580px',
+              marginBottom: '3rem',
+            }}>
+              Autonomous AI agents engineered for high-stakes enterprise environments. 
+              Deploy 600+ specialized agents across Procurement, Finance, HR, Operations and more. 
+              Proven $150M+ annual value across 50+ global clients.
+            </p>
+
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <a href="#functions" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                padding: '0.95rem 2.5rem',
+                background: 'transparent', color: '#ffffff',
+                border: '1px solid rgba(255,255,255,0.5)',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '0.72rem', fontWeight: 600,
+                letterSpacing: '0.18em', textTransform: 'uppercase',
+                textDecoration: 'none',
+                transition: 'all 0.25s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; e.currentTarget.style.color = '#1a1c1c'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#ffffff'; }}
+              >
+                Explore Portfolios <MoveRight size={14} />
+              </a>
+              <a href="#roi" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                padding: '0.95rem 2.5rem',
+                background: '#ffffff', color: '#1a1c1c',
+                border: '1px solid #ffffff',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '0.72rem', fontWeight: 600,
+                letterSpacing: '0.18em', textTransform: 'uppercase',
+                textDecoration: 'none',
+                transition: 'all 0.25s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.opacity = '0.8'; }}
+              onMouseLeave={e => { e.currentTarget.style.opacity = '1'; }}
+              >
+                See ROI Analysis
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── Department Mosaic Grid — Architectures of Intelligence ─── */}
+      <section style={{ padding: '8rem 4rem', background: '#f9f9f9' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
+
+          {/* Section Header */}
+          <div style={{ marginBottom: '4rem', marginLeft: '8.333%' }}>
+            <h2 style={{
+              fontFamily: 'Newsreader, Georgia, serif',
+              fontSize: '2.25rem', fontWeight: 400,
+              letterSpacing: '-0.01em', color: '#000000',
+              marginBottom: '1rem',
+            }}>
+              Architectures of Intelligence
+            </h2>
+            <p style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '1rem', color: '#4c4546',
+              lineHeight: 1.6, maxWidth: '400px',
+            }}>
+              Specialized autonomous systems designed to integrate seamlessly into core business verticals.
+            </p>
+          </div>
+
+          {/* The mosaic grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(12, 1fr)',
+            gridTemplateRows: 'auto',
+            gap: '2rem',
+          }}>
+            {mosaicTiles.map((tile) => {
+              const isHovered = hoveredTile === tile.name;
+              return (
+                <motion.div
+                  key={tile.name}
+                  onClick={() => onDepartmentClick && onDepartmentClick(tile.mapped)}
+                  onHoverStart={() => setHoveredTile(tile.name)}
+                  onHoverEnd={() => setHoveredTile(null)}
+                  style={{
+                    gridColumn: tile.gridCol,
+                    gridRow: tile.gridRow,
+                    height: tile.height,
+                    backgroundColor: isHovered ? tile.bgHover : tile.bg,
+                    backgroundImage: tile.bgImage || 'none',
+                    backgroundSize: tile.bgSize || 'auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'background 0.25s ease',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {/* Department name — dead center, editorial */}
+                  <h3 style={{
+                    fontFamily: 'Newsreader, Georgia, serif',
+                    fontSize: '2.25rem',
+                    fontWeight: 400,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: tile.textColor || '#1a1c1c',
+                    userSelect: 'none',
+                    transition: 'opacity 0.2s',
+                    opacity: isHovered ? 0.6 : 1,
+                  }}>
+                    {tile.name}
+                  </h3>
+
+                  {/* Hover: subtle bottom border accent */}
+                  <motion.div
+                    animate={{ scaleX: isHovered ? 1 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    style={{
+                      position: 'absolute', bottom: 0, left: 0, right: 0,
+                      height: '2px', background: tile.textColor || '#1a1c1c',
+                      transformOrigin: 'left',
+                    }}
+                  />
+
+                  {/* Hover: explore label bottom-right */}
+                  <motion.div
+                    animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 4 }}
+                    transition={{ duration: 0.2 }}
+                    style={{
+                      position: 'absolute', bottom: '1.25rem', right: '1.5rem',
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '0.62rem', fontWeight: 600,
+                      letterSpacing: '0.2em', textTransform: 'uppercase',
+                      color: tile.textColor === '#ffffff' ? 'rgba(255,255,255,0.7)' : '#4c4546',
+                    }}
+                  >
+                    Explore →
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Trust / Stats Bar ─── */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        style={{
+          borderTop: '1px solid #cfc4c5',
+          borderBottom: '1px solid #cfc4c5',
+          background: '#ffffff',
+          padding: '3rem 4rem',
+        }}
+      >
+        <div style={{
+          maxWidth: '1200px', margin: '0 auto',
+          display: 'flex', justifyContent: 'center',
+          alignItems: 'center', gap: '4rem', flexWrap: 'wrap',
+        }}>
+          {[
+            { icon: Building2, value: '50+', sub: 'Enterprise Clients', note: 'Transforming operations globally' },
+            { divider: true },
+            { icon: TrendingUp, value: '$5.5B+', sub: 'Client Revenue Protected', note: 'Combined across all deployments' },
+            { divider: true },
+            { icon: Shield, value: 'ISO 27001', sub: 'SOC 2 Type 2', note: 'Certified security infrastructure' },
+          ].map((item, i) => {
+            if ('divider' in item) return (
+              <div key={i} style={{ width: '1px', height: '48px', background: '#cfc4c5' }} />
+            );
+            const Icon = item.icon!;
+            return (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                <Icon size={20} style={{ color: '#4c4546', marginTop: '3px', flexShrink: 0 }} />
+                <div>
+                  <div style={{
+                    fontFamily: 'Newsreader, Georgia, serif',
+                    fontSize: '1.75rem', fontWeight: 400, color: '#1a1c1c', lineHeight: 1,
+                  }}>{item.value}</div>
+                  <div style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '0.68rem', fontWeight: 600,
+                    letterSpacing: '0.14em', textTransform: 'uppercase',
+                    color: '#4c4546', marginTop: '6px',
+                  }}>{item.sub}</div>
+                  <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.75rem', color: '#7e7576', marginTop: '2px' }}>{item.note}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </motion.section>
+    </>
+  );
 };

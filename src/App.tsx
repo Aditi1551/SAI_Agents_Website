@@ -26,59 +26,81 @@ function App() {
 
   return (
     <div className="app-layout">
-      {/* Header / Nav */}
-      <header
-        style={{
-          padding: 'var(--spacing-6) 0',
-          position: 'sticky',
-          top: 0,
-          zIndex: 100,
-          background: 'rgba(2, 8, 19, 0.8)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid var(--glass-border)'
-        }}
-      >
-        <div className="container flex justify-between items-center">
-          <div style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ fontSize: 'var(--font-size-3xl)', fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', textShadow: '0 0 15px rgba(255,255,255,0.2)' }}>SequelX</span>
-            <span style={{ color: 'var(--color-secondary)', fontSize: 'var(--font-size-sm)', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', marginTop: '6px' }}>&mdash; SAI - Agentic AI Platform</span>
+      {/* Header / Nav — Artisan.AI Intellectual Luxury style */}
+      <header style={{
+        position: 'sticky', top: 0, zIndex: 100,
+        background: 'rgba(249,249,249,0.96)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid #e8e8e8',
+      }}>
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          maxWidth: '1920px', margin: '0 auto', padding: '1.5rem 4rem',
+        }}>
+          {/* Brand */}
+          <div style={{
+            fontFamily: 'Newsreader, Georgia, serif',
+            fontSize: '1.2rem', fontWeight: 400,
+            letterSpacing: '0.28em', textTransform: 'uppercase', color: '#1a1c1c',
+            cursor: 'pointer',
+          }} onClick={() => { setShowLibrary(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            SAI
           </div>
-          <nav className="flex gap-6 items-center" style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>
-            <a href="#" style={{ color: 'var(--color-text)', textDecoration: 'none' }} onClick={(e) => { e.preventDefault(); setShowLibrary(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</a>
-            <a href="#architecture" style={{ color: 'var(--color-text)', textDecoration: 'none' }} onClick={() => setShowLibrary(false)}>Architecture</a>
-            <a href="#functions" style={{ color: 'var(--color-text)', textDecoration: 'none' }} onClick={() => setShowLibrary(false)}>Functions</a>
-            <a href="#dashboard" style={{ color: 'var(--color-text)', textDecoration: 'none' }} onClick={() => setShowLibrary(false)}>Pricing</a>
-            <div className="flex gap-3 items-center ml-4 border-l border-gray-800 pl-4">
-              <button
-                className="btn btn-secondary"
-                style={{ padding: '0.5rem 1rem', fontSize: 'var(--font-size-sm)' }}
-                onClick={() => openModal('download')}
-              >
-                Download Material
-              </button>
-              <button
-                className="btn btn-primary"
-                style={{ padding: '0.5rem 1rem', fontSize: 'var(--font-size-sm)' }}
-                onClick={() => openModal('demo')}
-              >
-                Book a Demo
-              </button>
-              <button
-                onClick={() => {
-                  if (showLibrary) {
-                    setShowLibrary(false);
-                  } else {
-                    setInitialDepartment('All');
-                    setShowLibrary(true);
-                  }
-                }}
-                className="btn"
-                style={{ padding: '0.5rem 1.25rem', fontSize: 'var(--font-size-sm)', backgroundColor: showLibrary ? 'var(--color-surface)' : 'rgba(99, 91, 255, 0.2)', border: '1px solid var(--primary)', color: 'white' }}
-              >
-                {showLibrary ? 'Back to Platform' : 'Explore 600+ Agents'}
-              </button>
-            </div>
+
+          {/* Nav Links */}
+          <nav style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
+            {[
+              { label: 'Strategy',         href: '#architecture',  action: () => setShowLibrary(false) },
+              { label: 'Expertise',        href: '#functions',     action: () => setShowLibrary(false) },
+              { label: 'Agent Portfolios', href: '#',              action: (e: React.MouseEvent) => { e.preventDefault(); setInitialDepartment('All'); setShowLibrary(true); } },
+              { label: 'Insights',         href: '#roi',           action: () => setShowLibrary(false) },
+            ].map(item => (
+              <a key={item.label} href={item.href} onClick={item.action} style={{
+                fontFamily: 'Inter, sans-serif',
+                color: '#4c4546', textDecoration: 'none',
+                fontSize: '0.72rem', fontWeight: 500,
+                letterSpacing: '0.18em', textTransform: 'uppercase',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#1a1c1c')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#4c4546')}
+              >{item.label}</a>
+            ))}
           </nav>
+
+          {/* CTAs */}
+          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+            <button onClick={() => openModal('download')} style={{
+              background: 'transparent', color: '#4c4546', border: 'none',
+              cursor: 'pointer', fontFamily: 'Inter, sans-serif',
+              fontSize: '0.72rem', fontWeight: 500,
+              letterSpacing: '0.14em', textTransform: 'uppercase',
+            }}>Material</button>
+
+            <button onClick={() => openModal('demo')} style={{
+              background: '#1a1c1c', color: '#ffffff',
+              border: '1px solid #1a1c1c', cursor: 'pointer',
+              fontFamily: 'Inter, sans-serif', fontSize: '0.72rem',
+              fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase',
+              padding: '0.75rem 2rem', transition: 'opacity 0.2s',
+            }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.75')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+            >Consultation</button>
+
+            <button onClick={() => { if (showLibrary) { setShowLibrary(false); } else { setInitialDepartment('All'); setShowLibrary(true); } }}
+              style={{
+                background: showLibrary ? '#e8e8e8' : 'transparent',
+                color: '#1a1c1c', border: '1px solid #cfc4c5',
+                cursor: 'pointer', fontFamily: 'Inter, sans-serif',
+                fontSize: '0.72rem', fontWeight: 500,
+                letterSpacing: '0.14em', textTransform: 'uppercase',
+                padding: '0.75rem 1.5rem', transition: 'all 0.2s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = '#e8e8e8')}
+              onMouseLeave={e => (e.currentTarget.style.background = showLibrary ? '#e8e8e8' : 'transparent')}
+            >{showLibrary ? '← Back' : '600+ Agents'}</button>
+          </div>
         </div>
       </header>
 
@@ -101,7 +123,8 @@ function App() {
 
       {/* Ready to Deploy CTA */}
       <section id="contact" style={{
-        background: 'linear-gradient(135deg, #0052FF 0%, #00D4FF 100%)',
+        background: '#1a1c1c',
+        borderTop: '1px solid #000',
         padding: 'var(--spacing-16) 0',
         textAlign: 'center',
         color: '#fff'
@@ -137,40 +160,34 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: 'var(--spacing-16) 0 var(--spacing-8) 0', background: '#020617', borderTop: '1px solid var(--glass-border)' }}>
-        <div className="container">
+      <footer style={{ padding: 'var(--spacing-16) 0 var(--spacing-8) 0', background: '#f9f9f9', borderTop: '1px solid #e8e8e8' }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 2fr) 1fr 1fr 1fr', gap: 'var(--spacing-8)', marginBottom: 'var(--spacing-12)' }}>
             {/* Branding & Info */}
             <div>
-              <div style={{ fontSize: 'var(--font-size-2xl)', fontWeight: 800, color: '#00D4FF', letterSpacing: '-0.02em', marginBottom: 'var(--spacing-6)' }}>
-                SequelString AI Pvt. Ltd.
+              <div style={{ fontFamily: 'Newsreader, Georgia, serif', fontSize: '1.3rem', fontWeight: 400, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#1a1c1c', marginBottom: 'var(--spacing-6)' }}>
+                SequelString AI
               </div>
-              <p style={{ color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)', lineHeight: 1.6, marginBottom: 'var(--spacing-4)', maxWidth: '90%' }}>
+              <p style={{ color: '#4c4546', fontSize: 'var(--font-size-sm)', lineHeight: 1.6, marginBottom: 'var(--spacing-4)', maxWidth: '90%' }}>
                 DPIIT-recognized enterprise AI and automation company.<br />
                 120+ employees serving 50+ clients across India and MEA.<br />
-                <span style={{ display: 'inline-block', marginTop: '0.5rem', padding: '0.25rem 0.5rem', background: 'rgba(0, 212, 255, 0.1)', border: '1px solid rgba(0, 212, 255, 0.2)', borderRadius: '4px', color: '#00D4FF', fontSize: '0.75rem', fontWeight: 600 }}>ISO 27001 & SOC 2 Type 2 Certified</span>
+                <span style={{ display: 'inline-block', marginTop: '0.5rem', padding: '0.25rem 0.5rem', background: '#e8e8e8', border: '1px solid #cfc4c5', color: '#1a1c1c', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>ISO 27001 &amp; SOC 2 Type 2</span>
               </p>
-              <div style={{ color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)', lineHeight: 1.6, marginBottom: 'var(--spacing-2)' }}>
-                <strong style={{ color: '#fff' }}>Global Presence:</strong><br />
-                <div className="flex items-center gap-2"><MapPin size={14} /> Navi Mumbai, India (HQ)</div>
-                <div className="flex items-center gap-2"><MapPin size={14} /> Dubai, UAE</div>
-                <div className="flex items-center gap-2"><MapPin size={14} /> Delaware, USA</div>
-              </div>
-              <div style={{ color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)', lineHeight: 1.6 }}>
-                <strong style={{ color: '#fff' }}>Contact:</strong><br />
-                <div className="flex items-center gap-2"><Mail size={14} /> <a href="mailto:info@sequelstring.com" style={{ color: '#00D4FF', textDecoration: 'none' }}>info@sequelstring.com</a></div>
+              <div style={{ color: '#4c4546', fontSize: 'var(--font-size-sm)', lineHeight: 2 }}>
+                <div className="flex items-center gap-2"><MapPin size={12} /> Navi Mumbai, India (HQ)</div>
+                <div className="flex items-center gap-2"><MapPin size={12} /> Dubai, UAE</div>
+                <div className="flex items-center gap-2"><MapPin size={12} /> Delaware, USA</div>
+                <div className="flex items-center gap-2" style={{ marginTop: '0.5rem' }}><Mail size={12} /> <a href="mailto:info@sequelstring.com" style={{ color: '#1a1c1c', textDecoration: 'underline', textUnderlineOffset: '3px' }}>info@sequelstring.com</a></div>
               </div>
             </div>
 
             {/* Solutions */}
             <div>
-              <h4 style={{ color: '#00D4FF', fontWeight: 600, marginBottom: 'var(--spacing-6)', fontSize: 'var(--font-size-base)' }}>Solutions</h4>
+              <h4 style={{ fontFamily: 'Inter, sans-serif', color: '#1a1c1c', fontWeight: 600, fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 'var(--spacing-6)' }}>Solutions</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-3)' }}>
-                <li><a href="#functions" onClick={(e) => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('functions')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: 'var(--color-text-muted)', textDecoration: 'none', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s' }}>AI Agents Platform</a></li>
-                <li><a href="#functions" onClick={(e) => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('functions')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: 'var(--color-text-muted)', textDecoration: 'none', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s' }}>SAP Automation</a></li>
-                <li><a href="#functions" onClick={(e) => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('functions')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: 'var(--color-text-muted)', textDecoration: 'none', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s' }}>Procurement AI</a></li>
-                <li><a href="#functions" onClick={(e) => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('functions')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: 'var(--color-text-muted)', textDecoration: 'none', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s' }}>Finance Automation</a></li>
-                <li><a href="#functions" onClick={(e) => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('functions')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: 'var(--color-text-muted)', textDecoration: 'none', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s' }}>Supply Chain AI</a></li>
+                {['AI Agents Platform','SAP Automation','Procurement AI','Finance Automation','Supply Chain AI'].map(s => (
+                  <li key={s}><a href="#functions" onClick={e => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('functions')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: '#7e7576', textDecoration: 'none', fontSize: 'var(--font-size-sm)' }} onMouseEnter={e => (e.currentTarget.style.color='#1a1c1c')} onMouseLeave={e => (e.currentTarget.style.color='#7e7576')}>{s}</a></li>
+                ))}
               </ul>
             </div>
 

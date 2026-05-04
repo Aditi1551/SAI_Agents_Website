@@ -58,7 +58,7 @@ export const ArchitectureSection: React.FC = () => {
                         How AI Agents Work
                     </h2>
                     <p style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-muted)', maxWidth: '800px', margin: '0 auto' }}>
-                        SequelX AI platform is built on a modular, scalable 5-layer enterprise architecture ensuring reliability, security, and performance.
+                        SAI platform is built on a modular, scalable 5-layer enterprise architecture ensuring reliability, security, and performance.
                     </p>
                 </div>
 

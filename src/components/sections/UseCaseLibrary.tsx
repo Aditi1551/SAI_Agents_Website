@@ -120,7 +120,7 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                 <div className="flex-col items-center justify-center text-center mb-12">
                     <Badge variant="purple" className="mb-4">Enterprise Agent Directory</Badge>
                     <div style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: 'var(--spacing-4)', fontFamily: 'var(--font-heading)', fontWeight: 700, color: 'var(--color-text)' }}>
-                        600+ AI <span className="text-gradient">Agent Use Cases</span>
+                        600+ AI <span className="text-gradient">Agents</span>
                     </div>
                     <p style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-muted)', maxWidth: '800px', margin: '0 auto' }}>
                         Browse the world's largest repository of production-ready autonomous enterprise AI agents. Filter by department or search for specific capabilities.
@@ -128,7 +128,7 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                 </div>
 
                 {/* Filters & Search */}
-                <div className="glass-panel" style={{ position: 'sticky', top: '5.5rem', zIndex: 30, marginBottom: '2rem', padding: '0.75rem 1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <div className="glass-panel" style={{ marginBottom: '2rem', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem', background: '#f9f9f9', border: '1px solid #e5e5e5', borderRadius: '8px' }}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div style={{ position: 'relative', width: '100%', maxWidth: '350px' }}>
                             <Search style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-text-muted)', width: '16px', height: '16px' }} />
@@ -196,27 +196,25 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', flex: 1 }}>
                             {viewMode === 'department' ? (
-                                departments.map(dept => (
-                                    <button
-                                        key={dept}
-                                        onClick={() => { setSelectedFunction(dept); setSelectedDomain('All'); setCurrentPage(1); }}
-                                        className={`filter-btn ${selectedFunction === dept ? 'active' : ''}`}
-                                        style={{ padding: '4px 10px', fontSize: '0.75rem', borderRadius: '4px' }}
-                                    >
-                                        {dept === 'All' ? 'All' : dept}
-                                    </button>
-                                ))
+                                <select 
+                                    value={selectedFunction} 
+                                    onChange={(e) => { setSelectedFunction(e.target.value); setSelectedDomain('All'); setCurrentPage(1); }}
+                                    style={{ padding: '8px 12px', borderRadius: '4px', border: '1px solid #d1d5db', background: 'white', color: '#1a1c1c', fontSize: '0.875rem', outline: 'none', cursor: 'pointer', flex: 1, maxWidth: '400px', fontFamily: 'Inter, sans-serif' }}
+                                >
+                                    {departments.map(dept => (
+                                        <option key={dept} value={dept}>{dept === 'All' ? 'All Departments' : dept}</option>
+                                    ))}
+                                </select>
                             ) : (
-                                sectors.map(sector => (
-                                    <button
-                                        key={sector}
-                                        onClick={() => { setSelectedSector(sector); setSelectedIndustryGroup('All'); setCurrentPage(1); }}
-                                        className={`filter-btn ${selectedSector === sector ? 'active' : ''}`}
-                                        style={{ padding: '4px 10px', fontSize: '0.75rem', borderRadius: '4px', borderColor: selectedSector === sector ? '#10B981' : undefined, color: selectedSector === sector ? '#10B981' : undefined, background: selectedSector === sector ? 'rgba(16, 185, 129, 0.1)' : undefined }}
-                                    >
-                                        {sector === 'All' ? 'All' : sector}
-                                    </button>
-                                ))
+                                <select 
+                                    value={selectedSector} 
+                                    onChange={(e) => { setSelectedSector(e.target.value); setSelectedIndustryGroup('All'); setCurrentPage(1); }}
+                                    style={{ padding: '8px 12px', borderRadius: '4px', border: '1px solid #10B981', background: 'rgba(16, 185, 129, 0.05)', color: '#040b16', fontSize: '0.875rem', outline: 'none', cursor: 'pointer', flex: 1, maxWidth: '400px', fontFamily: 'Inter, sans-serif' }}
+                                >
+                                    {sectors.map(sector => (
+                                        <option key={sector} value={sector}>{sector === 'All' ? 'All Sectors' : sector}</option>
+                                    ))}
+                                </select>
                             )}
                         </div>
                     </div>
@@ -238,27 +236,25 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                 </div>
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', flex: 1 }}>
                                     {viewMode === 'department' ? (
-                                        subDepartments.map(domain => (
-                                            <button
-                                                key={domain}
-                                                onClick={() => { setSelectedDomain(domain); setCurrentPage(1); }}
-                                                className={`sub-filter-btn ${selectedDomain === domain ? 'active' : ''}`}
-                                                style={{ padding: '3px 8px', fontSize: '0.75rem', borderRadius: '4px' }}
-                                            >
-                                                {domain === 'All' ? 'All' : domain}
-                                            </button>
-                                        ))
+                                        <select 
+                                            value={selectedDomain} 
+                                            onChange={(e) => { setSelectedDomain(e.target.value); setCurrentPage(1); }}
+                                            style={{ padding: '6px 10px', borderRadius: '4px', border: '1px solid #e5e7eb', background: 'white', color: '#4b5563', fontSize: '0.8rem', outline: 'none', cursor: 'pointer', flex: 1, maxWidth: '400px', fontFamily: 'Inter, sans-serif' }}
+                                        >
+                                            {subDepartments.map(domain => (
+                                                <option key={domain} value={domain}>{domain === 'All' ? 'All Sub-Departments' : domain}</option>
+                                            ))}
+                                        </select>
                                     ) : (
-                                        industryGroups.map(group => (
-                                            <button
-                                                key={group}
-                                                onClick={() => { setSelectedIndustryGroup(group); setCurrentPage(1); }}
-                                                className={`sub-filter-btn ${selectedIndustryGroup === group ? 'active' : ''}`}
-                                                style={{ padding: '3px 8px', fontSize: '0.75rem', borderRadius: '4px' }}
-                                            >
-                                                {group === 'All' ? 'All' : group}
-                                            </button>
-                                        ))
+                                        <select 
+                                            value={selectedIndustryGroup} 
+                                            onChange={(e) => { setSelectedIndustryGroup(e.target.value); setCurrentPage(1); }}
+                                            style={{ padding: '6px 10px', borderRadius: '4px', border: '1px solid #e5e7eb', background: 'white', color: '#4b5563', fontSize: '0.8rem', outline: 'none', cursor: 'pointer', flex: 1, maxWidth: '400px', fontFamily: 'Inter, sans-serif' }}
+                                        >
+                                            {industryGroups.map(group => (
+                                                <option key={group} value={group}>{group === 'All' ? 'All Groups' : group}</option>
+                                            ))}
+                                        </select>
                                     )}
                                 </div>
                             </motion.div>
@@ -276,7 +272,7 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                 {filteredCases.length === 0 ? (
                     <div className="glass-panel p-20 text-center flex-col items-center">
                         <AppWindow className="w-16 h-16 text-gray-600 mb-4 mx-auto" />
-                        <h3 className="text-xl text-white mb-2">No Agents Found</h3>
+                        <h3 className="text-xl mb-2" style={{ color: 'var(--color-text)' }}>No Agents Found</h3>
                         <p className="text-gray-400">Try adjusting your search terms or filters.</p>
                     </div>
                 ) : (
@@ -304,7 +300,7 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                             </span>
                                         </div>
                                         {/* Using div with inline style to override any CSS heading rules that force bold */}
-                                        <div style={{ fontSize: 'var(--font-size-lg)', color: '#fff', marginBottom: 'var(--spacing-3)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.3 }}>{uc.title}</div>
+                                        <div style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text)', marginBottom: 'var(--spacing-3)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.3 }}>{uc.title}</div>
                                         <div className="line-clamp-3" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)', marginBottom: 'var(--spacing-4)' }}>{uc.description}</div>
 
                                         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-4)', marginTop: 'auto', paddingTop: 'var(--spacing-4)', borderTop: '1px solid var(--glass-border)' }}>

@@ -32,7 +32,7 @@ export const DashboardSection: React.FC<DashboardSectionProps> = ({ onOpenDemo }
                             Enterprise <span className="text-gradient">Economics &amp; Delivery</span>
                         </h2>
                         <p style={{ color: 'var(--color-text-muted)', fontSize: 'var(--font-size-lg)', maxWidth: '600px', margin: '0 auto' }}>
-                            Discover how SequelX scales across your organization, from transparent licensing to secure, on-premise infrastructure deployments.
+                            Discover how SAI scales across your organization, from transparent licensing to secure, on-premise infrastructure deployments.
                         </p>
                     </div>
 
@@ -141,7 +141,7 @@ export const DashboardSection: React.FC<DashboardSectionProps> = ({ onOpenDemo }
                                             <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Virtual Private Cloud (Dedicated)</h3>
                                         </div>
                                         <p style={{ color: 'var(--color-text-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                                            The fastest path to value. SequelX is hosted within uniquely isolated AWS/Azure instances specifically dedicated to your organization. Complete data segregation with enterprise-grade encryption at rest and in transit.
+                                            The fastest path to value. SAI is hosted within uniquely isolated AWS/Azure instances specifically dedicated to your organization. Complete data segregation with enterprise-grade encryption at rest and in transit.
                                         </p>
                                         <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                             <span style={{ color: '#9CA3AF', fontSize: '0.85rem' }}>Time to Value</span>
@@ -157,7 +157,7 @@ export const DashboardSection: React.FC<DashboardSectionProps> = ({ onOpenDemo }
                                             <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>On-Premise / Client Cloud</h3>
                                         </div>
                                         <p style={{ color: 'var(--color-text-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                                            For highly-regulated environments (BFSI, Defense, Healthcare). We containerize the entire SequelX Agent platform and deploy it directly into your own infrastructure—zero data ever leaves your firewall.
+                                            For highly-regulated environments (BFSI, Defense, Healthcare). We containerize the entire SAI Agent platform and deploy it directly into your own infrastructure—zero data ever leaves your firewall.
                                         </p>
                                         <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                             <span style={{ color: '#9CA3AF', fontSize: '0.85rem' }}>Time to Value</span>
