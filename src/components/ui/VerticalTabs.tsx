@@ -48,9 +48,9 @@ export const VerticalTabs: React.FC<VerticalTabsProps> = ({ tabs, activeTab, onC
                                 gap: 'var(--spacing-3)',
                                 padding: 'var(--spacing-4)',
                                 borderRadius: 'var(--radius-md)',
-                                background: isActive ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
-                                border: `1px solid ${isActive ? 'rgba(255,255,255,0.1)' : 'transparent'}`,
-                                color: isActive ? '#fff' : 'var(--color-text-muted)',
+                                background: isActive ? 'var(--color-surface-low)' : 'transparent',
+                                border: `1px solid ${isActive ? 'var(--color-outline-variant)' : 'transparent'}`,
+                                color: isActive ? 'var(--color-primary)' : 'var(--color-text-muted)',
                                 textAlign: 'left',
                                 cursor: 'pointer',
                                 transition: 'all var(--transition-fast)',
@@ -60,8 +60,8 @@ export const VerticalTabs: React.FC<VerticalTabsProps> = ({ tabs, activeTab, onC
                             }}
                             onMouseEnter={(e) => {
                                 if (!isActive) {
-                                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
-                                    e.currentTarget.style.color = '#fff';
+                                    e.currentTarget.style.background = 'var(--color-surface-mid)';
+                                    e.currentTarget.style.color = 'var(--color-primary)';
                                 }
                             }}
                             onMouseLeave={(e) => {

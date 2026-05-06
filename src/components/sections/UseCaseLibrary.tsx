@@ -142,9 +142,9 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                     width: '100%',
                                     padding: '8px 12px 8px 32px',
                                     borderRadius: '6px',
-                                    border: '1px solid rgba(255,255,255,0.1)',
-                                    background: 'rgba(0,0,0,0.2)',
-                                    color: 'white',
+                                    border: '1px solid var(--color-outline-variant)',
+                                    background: 'var(--color-surface)',
+                                    color: 'var(--color-primary)',
                                     outline: 'none',
                                     fontSize: '0.9rem'
                                 }}
@@ -159,8 +159,8 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                     fontSize: '0.8rem',
                                     borderRadius: '4px',
                                     transition: 'all 0.2s ease',
-                                    backgroundColor: viewMode === 'department' ? '#00D4FF' : 'transparent',
-                                    color: viewMode === 'department' ? '#040b16' : '#9ca3af',
+                                    backgroundColor: viewMode === 'department' ? 'var(--color-primary)' : 'transparent',
+                                    color: viewMode === 'department' ? 'var(--color-surface-white)' : 'var(--color-on-surface-variant)',
                                     fontWeight: viewMode === 'department' ? 600 : 400,
                                     border: 'none',
                                     cursor: 'pointer'
@@ -175,8 +175,8 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                     fontSize: '0.8rem',
                                     borderRadius: '4px',
                                     transition: 'all 0.2s ease',
-                                    backgroundColor: viewMode === 'industry' ? '#10B981' : 'transparent',
-                                    color: viewMode === 'industry' ? '#040b16' : '#9ca3af',
+                                    backgroundColor: viewMode === 'industry' ? 'var(--color-primary)' : 'transparent',
+                                    color: viewMode === 'industry' ? 'var(--color-surface-white)' : 'var(--color-on-surface-variant)',
                                     fontWeight: viewMode === 'industry' ? 600 : 400,
                                     border: 'none',
                                     cursor: 'pointer'
@@ -189,8 +189,8 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', width: '100%', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '0.5rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginRight: '8px' }}>
-                            <Filter style={{ width: '14px', height: '14px', color: viewMode === 'department' ? 'var(--color-primary)' : '#10B981' }} />
-                            <span style={{ color: '#9CA3AF', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 500 }}>
+                            <Filter style={{ width: '14px', height: '14px', color: 'var(--color-primary)' }} />
+                            <span style={{ color: 'var(--color-on-surface-variant)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 500 }}>
                                 {viewMode === 'department' ? 'DEPT:' : 'SECTOR:'}
                             </span>
                         </div>
@@ -209,7 +209,7 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                 <select 
                                     value={selectedSector} 
                                     onChange={(e) => { setSelectedSector(e.target.value); setSelectedIndustryGroup('All'); setCurrentPage(1); }}
-                                    style={{ padding: '8px 12px', borderRadius: '4px', border: '1px solid #10B981', background: 'rgba(16, 185, 129, 0.05)', color: '#040b16', fontSize: '0.875rem', outline: 'none', cursor: 'pointer', flex: 1, maxWidth: '400px', fontFamily: 'Inter, sans-serif' }}
+                                    style={{ padding: '8px 12px', borderRadius: '4px', border: '1px solid var(--color-outline-variant)', background: 'var(--color-surface-low)', color: 'var(--color-primary)', fontSize: '0.875rem', outline: 'none', cursor: 'pointer', flex: 1, maxWidth: '400px', fontFamily: 'Inter, sans-serif' }}
                                 >
                                     {sectors.map(sector => (
                                         <option key={sector} value={sector}>{sector === 'All' ? 'All Sectors' : sector}</option>
@@ -291,7 +291,7 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                     <div style={{ padding: 'var(--spacing-6)', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--spacing-4)' }}>
                                             <Badge variant={viewMode === 'industry' ? 'green' : 'blue'}>{uc.id}</Badge>
-                                            <span style={{ fontSize: '11px', color: viewMode === 'industry' ? '#10B981' : 'var(--color-secondary)', fontFamily: 'var(--font-mono)', background: viewMode === 'industry' ? 'rgba(16,185,129,0.1)' : 'rgba(0,212,255,0.1)', padding: '2px 8px', borderRadius: '4px', textAlign: 'right', maxWidth: '70%' }}>
+                                            <span style={{ fontSize: '11px', color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', background: 'var(--color-surface-high)', padding: '2px 8px', borderRadius: '4px', textAlign: 'right', maxWidth: '70%', border: '1px solid var(--color-outline-variant)' }}>
                                                 {viewMode === 'industry' ? (
                                                     <>{uc.industryGroup} • {uc.industry}</>
                                                 ) : (
@@ -311,13 +311,13 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                                 <div className="custom-tooltip" style={{
                                                     position: 'absolute', bottom: '100%', left: 0, marginBottom: '8px',
                                                     width: 'max-content', minWidth: '220px', maxWidth: '300px',
-                                                    background: 'rgba(11, 25, 44, 0.95)', border: '1px solid var(--glass-border)',
+                                                    background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)',
                                                     borderRadius: 'var(--radius-md)', padding: 'var(--spacing-3)',
-                                                    color: '#fff', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)',
+                                                    color: 'var(--color-primary)', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
                                                     backdropFilter: 'blur(12px)', zIndex: 50, display: 'none', flexDirection: 'column'
                                                 }}>
-                                                    <div style={{ fontWeight: 600, color: '#10B981', marginBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '4px' }}>5 Core Reasoning Layers</div>
-                                                    <ol style={{ paddingLeft: '16px', margin: 0, color: '#D1D5DB', display: 'flex', flexDirection: 'column', gap: '4px', listStyleType: 'decimal' }}>
+                                                    <div style={{ fontWeight: 600, color: 'var(--color-primary)', marginBottom: '8px', borderBottom: '1px solid var(--color-outline-variant)', paddingBottom: '4px' }}>5 Core Reasoning Layers</div>
+                                                    <ol style={{ paddingLeft: '16px', margin: 0, color: 'var(--color-on-surface-variant)', display: 'flex', flexDirection: 'column', gap: '4px', listStyleType: 'decimal' }}>
                                                         <li>Perception & Ingestion</li>
                                                         <li>Contextual Understanding</li>
                                                         <li>Strategic Planning & Routing</li>
@@ -333,13 +333,13 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                                 <div className="custom-tooltip" style={{
                                                     position: 'absolute', bottom: '100%', left: 0, marginBottom: '8px',
                                                     width: 'max-content', minWidth: '220px', maxWidth: '300px',
-                                                    background: 'rgba(11, 25, 44, 0.95)', border: '1px solid var(--glass-border)',
+                                                    background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)',
                                                     borderRadius: 'var(--radius-md)', padding: 'var(--spacing-3)',
-                                                    color: '#fff', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)',
+                                                    color: 'var(--color-primary)', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
                                                     backdropFilter: 'blur(12px)', zIndex: 50, display: 'none', flexDirection: 'column'
                                                 }}>
-                                                    <div style={{ fontWeight: 600, color: '#A78BFA', marginBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '4px' }}>7 Agent Sub-Routines</div>
-                                                    <ul style={{ paddingLeft: '16px', margin: 0, color: '#D1D5DB', display: 'flex', flexDirection: 'column', gap: '4px', listStyleType: 'disc' }}>
+                                                    <div style={{ fontWeight: 600, color: 'var(--color-primary)', marginBottom: '8px', borderBottom: '1px solid var(--color-outline-variant)', paddingBottom: '4px' }}>7 Agent Sub-Routines</div>
+                                                    <ul style={{ paddingLeft: '16px', margin: 0, color: 'var(--color-on-surface-variant)', display: 'flex', flexDirection: 'column', gap: '4px', listStyleType: 'disc' }}>
                                                         <li>Data Extraction & Validation</li>
                                                         <li>Anomaly Detection</li>
                                                         <li>Multi-System Syncing</li>
@@ -371,17 +371,17 @@ export const UseCaseLibrary: React.FC<UseCaseLibraryProps> = ({ initialDepartmen
                                                     className="overflow-hidden"
                                                     style={{ borderTop: '1px solid var(--glass-border)' }}
                                                 >
-                                                    <div style={{ padding: 'var(--spacing-6)', background: 'rgba(0,0,0,0.4)' }}>
+                                                    <div style={{ padding: 'var(--spacing-6)', background: 'var(--color-surface-highest)' }}>
                                                         {uc.flow && uc.flow.length > 0 ? (
                                                             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
                                                                 <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--color-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 'var(--spacing-4)' }}>Agent Execution Flow</div>
-                                                                <div style={{ position: 'relative', paddingLeft: '24px', borderLeft: '1px solid var(--glass-border)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
+                                                                <div style={{ position: 'relative', paddingLeft: '24px', borderLeft: '1px solid var(--color-outline-variant)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-6)' }}>
                                                                     {uc.flow.map((step, idx) => (
                                                                         <div key={idx} style={{ position: 'relative' }}>
-                                                                            <div style={{ position: 'absolute', left: '-33px', top: '4px', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '8px', color: '#fff', boxShadow: '0 0 0 4px var(--color-bg)' }}>
+                                                                            <div style={{ position: 'absolute', left: '-33px', top: '4px', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '8px', color: 'var(--color-surface-white)', boxShadow: '0 0 0 4px var(--color-surface)' }}>
                                                                                 {step.step}
                                                                             </div>
-                                                                            <div style={{ color: '#fff', fontSize: 'var(--font-size-sm)', marginBottom: '4px', fontWeight: 400 }}>{step.agent}</div>
+                                                                            <div style={{ color: 'var(--color-primary)', fontSize: 'var(--font-size-sm)', marginBottom: '4px', fontWeight: 600 }}>{step.agent}</div>
                                                                             <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>{step.description}</div>
                                                                         </div>
                                                                     ))}

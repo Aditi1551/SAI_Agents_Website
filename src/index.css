@@ -405,3 +405,14 @@ a:hover { opacity: 0.6; }
   letter-spacing: 0.14em; text-transform: uppercase;
   border-radius: 0;
 }
+
+/* ─── Animations ─── */
+@keyframes luxury-pulse {
+  0% { border-color: var(--color-outline-variant); background-color: transparent; }
+  50% { border-color: var(--color-primary); background-color: var(--color-surface-low); }
+  100% { border-color: var(--color-outline-variant); background-color: transparent; }
+}
+
+.blink-btn {
+  animation: luxury-pulse 2s infinite ease-in-out;
+}

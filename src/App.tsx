@@ -86,9 +86,11 @@ function App() {
             }}
             onMouseEnter={e => (e.currentTarget.style.opacity = '0.75')}
             onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
-            >Consultation</button>
+            >CONTACT US</button>
 
-            <button onClick={() => { if (showLibrary) { setShowLibrary(false); } else { setInitialDepartment('All'); setShowLibrary(true); } }}
+            <button 
+              onClick={() => { if (showLibrary) { setShowLibrary(false); } else { setInitialDepartment('All'); setShowLibrary(true); } }}
+              className={!showLibrary ? 'blink-btn' : ''}
               style={{
                 background: showLibrary ? '#e8e8e8' : 'transparent',
                 color: '#1a1c1c', border: '1px solid #cfc4c5',
@@ -130,7 +132,7 @@ function App() {
         color: '#fff'
       }}>
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'var(--font-size-4xl)', fontWeight: 800, marginBottom: 'var(--spacing-4)', letterSpacing: '-0.02em', textShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+          <h2 style={{ fontSize: 'var(--font-size-4xl)', fontWeight: 800, marginBottom: 'var(--spacing-4)', letterSpacing: '-0.02em', textShadow: '0 2px 10px rgba(0,0,0,0.1)', color: '#fff' }}>
             Ready to Deploy AI Agents?
           </h2>
           <p style={{ fontSize: 'var(--font-size-lg)', opacity: 0.9, marginBottom: 'var(--spacing-8)', lineHeight: 1.6 }}>
@@ -162,7 +164,7 @@ function App() {
       {/* Footer */}
       <footer style={{ padding: 'var(--spacing-16) 0 var(--spacing-8) 0', background: '#f9f9f9', borderTop: '1px solid #e8e8e8' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 2fr) 1fr 1fr 1fr', gap: 'var(--spacing-8)', marginBottom: 'var(--spacing-12)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 2fr) 1fr 1fr 1fr', gap: 'var(--spacing-12)', marginBottom: 'var(--spacing-12)', alignItems: 'start' }}>
             {/* Branding & Info */}
             <div>
               <div style={{ fontFamily: 'Newsreader, Georgia, serif', fontSize: '1.3rem', fontWeight: 400, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#1a1c1c', marginBottom: 'var(--spacing-6)' }}>
@@ -193,7 +195,7 @@ function App() {
 
             {/* Industries */}
             <div>
-              <h4 style={{ color: '#00D4FF', fontWeight: 600, marginBottom: 'var(--spacing-6)', fontSize: 'var(--font-size-base)' }}>Industries</h4>
+              <h4 style={{ fontFamily: 'Inter, sans-serif', color: '#1a1c1c', fontWeight: 600, fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 'var(--spacing-6)' }}>Industries</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-3)' }}>
                 <li><a href="#industries" onClick={(e) => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('industries')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: 'var(--color-text-muted)', textDecoration: 'none', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s' }}>Infrastructure</a></li>
                 <li><a href="#industries" onClick={(e) => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('industries')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: 'var(--color-text-muted)', textDecoration: 'none', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s' }}>Manufacturing</a></li>
@@ -205,7 +207,7 @@ function App() {
 
             {/* Company */}
             <div>
-              <h4 style={{ color: '#00D4FF', fontWeight: 600, marginBottom: 'var(--spacing-6)', fontSize: 'var(--font-size-base)' }}>Company</h4>
+              <h4 style={{ fontFamily: 'Inter, sans-serif', color: '#1a1c1c', fontWeight: 600, fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 'var(--spacing-6)' }}>Company</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-3)' }}>
                 <li><a href="#about" onClick={(e) => { e.preventDefault(); setShowLibrary(false); setTimeout(() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }), 100); }} style={{ color: 'var(--color-text-muted)', textDecoration: 'none', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s' }}>About Us</a></li>
                 <li><button onClick={() => setInfoModalType('cases')} style={{ background: 'none', border: 'none', padding: 0, color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)', transition: 'color 0.2s', cursor: 'pointer', textAlign: 'left' }}>Case Studies</button></li>

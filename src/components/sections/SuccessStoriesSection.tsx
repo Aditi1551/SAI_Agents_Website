@@ -99,14 +99,14 @@ export const SuccessStoriesSection: React.FC = () => {
         <section id="trust" style={{ padding: 'var(--spacing-32) 0 var(--spacing-20) 0', background: 'var(--color-bg)', borderTop: '1px solid var(--color-border)' }}>
             <div className="container">
                 {/* Stats Bar */}
-                <div className="glass-panel text-center" style={{ padding: 'var(--spacing-8)', marginBottom: 'var(--spacing-24)', background: 'linear-gradient(90deg, rgba(0,212,255,0.05) 0%, rgba(16,185,129,0.05) 100%)', border: '1px solid rgba(255,255,255,0.05)' }}>
-                    <div className="grid md:grid-cols-4 gap-8 divide-x divide-gray-800">
+                <div className="glass-panel text-center" style={{ padding: 'var(--spacing-8)', marginBottom: 'var(--spacing-24)', background: 'var(--color-surface-high)', border: '1px solid var(--color-outline-variant)' }}>
+                    <div className="grid md:grid-cols-4 gap-8" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', textAlign: 'center' }}>
                         {stats.map((stat, idx) => (
-                            <div key={idx} className="flex-col items-center justify-center p-4">
-                                <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>
+                            <div key={idx} className="flex-col items-center justify-center p-4" style={{ borderRight: idx !== stats.length - 1 ? '1px solid var(--color-outline-variant)' : 'none' }}>
+                                <div style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', marginBottom: '8px' }}>
                                     {stat.value}
                                 </div>
-                                <div style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600 }}>
+                                <div style={{ color: 'var(--color-on-surface-variant)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600 }}>
                                     {stat.label}
                                 </div>
                             </div>
@@ -125,10 +125,12 @@ export const SuccessStoriesSection: React.FC = () => {
                 </div>
 
                 {/* Client Logo Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-10 mb-32 items-center justify-center opacity-80 mix-blend-screen px-4 md:px-12">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-10 mb-32 items-center justify-center px-4 md:px-12">
                     {logos.map((logo, idx) => (
                         <div key={idx} className="flex items-center justify-center text-center group cursor-default" style={{ height: '80px', transition: 'all 0.4s ease' }}>
-                            <span className="text-gray-400 group-hover:text-white transition-colors duration-300" style={{ 
+                            <span style={{ 
+                                color: 'var(--color-on-surface-variant)',
+                                transition: 'color 0.3s',
                                 fontWeight: 600, 
                                 fontSize: '0.95rem', 
                                 textTransform: 'capitalize', 
@@ -136,7 +138,10 @@ export const SuccessStoriesSection: React.FC = () => {
                                 fontFamily: 'var(--font-heading)',
                                 lineHeight: '1.4',
                                 display: 'inline-block'
-                            }}>
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-on-surface-variant)'}
+                            >
                                 {logo}
                             </span>
                         </div>
@@ -156,25 +161,25 @@ export const SuccessStoriesSection: React.FC = () => {
                             style={{ padding: 'var(--spacing-8)', borderTop: `4px solid ${study.color}` }}
                         >
                             <div className="flex items-center gap-4 mb-6">
-                                <div style={{ padding: '12px', background: `${study.color}15`, borderRadius: '12px', color: study.color }}>
+                                <div style={{ padding: '12px', background: 'var(--color-surface-high)', borderRadius: '0', color: 'var(--color-primary)' }}>
                                     <study.icon size={28} />
                                 </div>
                                 <div>
-                                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#fff' }}>{study.client}</h3>
+                                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-primary)' }}>{study.client}</h3>
                                     <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{study.industry}</span>
                                 </div>
                             </div>
 
-                            <p style={{ fontSize: '0.95rem', color: '#D1D5DB', marginBottom: 'var(--spacing-6)', fontStyle: 'italic', borderLeft: `2px solid ${study.color}`, paddingLeft: '12px' }}>
+                            <p style={{ fontSize: '0.95rem', color: 'var(--color-on-surface-variant)', marginBottom: 'var(--spacing-6)', fontStyle: 'italic', borderLeft: `2px solid var(--color-primary)`, paddingLeft: '12px' }}>
                                 "{study.quote}"
                             </p>
 
-                            <div className="mt-auto pt-4 border-t border-gray-800">
-                                <h4 style={{ fontSize: '0.8rem', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>Proven Impact</h4>
+                            <div className="mt-auto pt-4" style={{ borderTop: '1px solid var(--color-outline-variant)' }}>
+                                <h4 style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>Proven Impact</h4>
                                 <ul className="flex-col gap-2">
                                     {study.impact.map((point, i) => (
-                                        <li key={i} className="flex gap-2 items-start text-sm text-gray-300">
-                                            <CheckCircle2 size={16} color={study.color} className="flex-shrink-0 mt-0.5" />
+                                        <li key={i} className="flex gap-2 items-start text-sm" style={{ color: 'var(--color-on-surface-variant)' }}>
+                                            <CheckCircle2 size={16} color="var(--color-primary)" className="flex-shrink-0 mt-0.5" />
                                             {point}
                                         </li>
                                     ))}
@@ -206,18 +211,18 @@ export const SuccessStoriesSection: React.FC = () => {
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
                                 className="glass-panel flex-col"
-                                style={{ padding: 'var(--spacing-6)', background: 'rgba(5, 12, 25, 0.9)', border: '1px solid rgba(255,255,255,0.05)', height: '100%', minHeight: '320px', justifyContent: 'flex-start' }}
+                                style={{ padding: 'var(--spacing-6)', background: 'var(--color-surface-high)', border: '1px solid var(--color-outline-variant)', height: '100%', minHeight: '320px', justifyContent: 'flex-start', borderRadius: '0' }}
                             >
-                                <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--spacing-6)', color: '#fff' }}>
+                                <div style={{ width: '50px', height: '50px', borderRadius: '0', background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--spacing-6)', color: 'var(--color-primary)' }}>
                                     <step.icon size={20} />
                                 </div>
-                                <div style={{ color: '#00D4FF', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                                <div style={{ color: 'var(--color-on-surface-variant)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                                     {step.duration}
                                 </div>
-                                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fff', marginBottom: '16px', lineHeight: 1.3 }}>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '16px', lineHeight: 1.3 }}>
                                     {step.title}
                                 </h3>
-                                <p style={{ fontSize: '0.9rem', color: '#8E9BAE', lineHeight: 1.6 }}>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--color-on-surface-variant)', lineHeight: 1.6 }}>
                                     {step.desc}
                                 </p>
                             </motion.div>
@@ -226,16 +231,16 @@ export const SuccessStoriesSection: React.FC = () => {
                 </div>
 
                 {/* ISO/Certifications Trust Banner */}
-                <div className="mt-20 glass-panel flex flex-col md:flex-row items-center justify-between" style={{ padding: 'var(--spacing-8)', border: '1px solid rgba(16, 185, 129, 0.2)', background: 'rgba(16, 185, 129, 0.05)' }}>
+                <div className="mt-20 glass-panel flex flex-col md:flex-row items-center justify-between" style={{ padding: 'var(--spacing-8)', border: '1px solid var(--color-outline-variant)', background: 'var(--color-surface-high)', borderRadius: '0' }}>
                     <div className="flex items-center gap-4 mb-4 md:mb-0">
-                        <ShieldCheck size={40} color="#10B981" />
+                        <ShieldCheck size={40} color="var(--color-primary)" />
                         <div>
-                            <h4 style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 700 }}>Bank-Grade Security & Governance</h4>
-                            <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>ISO 27001 Certified • SOC 2 Type II Compliant • GDPR Ready</p>
+                            <h4 style={{ color: 'var(--color-primary)', fontSize: '1.2rem', fontWeight: 700 }}>Bank-Grade Security & Governance</h4>
+                            <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '0.9rem' }}>ISO 27001 Certified • SOC 2 Type II Compliant • GDPR Ready</p>
                         </div>
                     </div>
                     <div>
-                        <a href="#contact" className="btn btn-outline" style={{ borderColor: '#10B981', color: '#10B981' }}>View Compliance Docs</a>
+                        <a href="#contact" className="btn btn-secondary">View Compliance Docs</a>
                     </div>
                 </div>
 

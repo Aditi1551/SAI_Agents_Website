@@ -14,11 +14,11 @@ export const HorizontalTabs: React.FC<TabListProps> = ({ tabs, activeTab, onTabC
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--spacing-16)' }}>
             <div style={{
                 display: 'inline-flex',
-                background: 'rgba(0,0,0,0.5)',
+                background: 'var(--color-surface-high)',
                 backdropFilter: 'blur(10px)',
                 padding: '0.5rem',
                 borderRadius: 'var(--radius-full)',
-                border: '1px solid rgba(255,255,255,0.1)',
+                border: '1px solid var(--color-outline-variant)',
                 gap: '0.5rem',
                 alignItems: 'center'
             }}>
@@ -34,15 +34,15 @@ export const HorizontalTabs: React.FC<TabListProps> = ({ tabs, activeTab, onTabC
                                 style={{
                                     position: 'relative',
                                     padding: '0.75rem 1.75rem',
-                                    color: '#0052FF',
-                                    background: '#fff',
+                                    color: 'var(--color-surface-white)',
+                                    background: 'var(--color-primary)',
                                     border: 'none',
                                     borderRadius: 'var(--radius-full)',
                                     fontSize: 'var(--font-size-sm)',
                                     fontWeight: 700,
                                     cursor: 'pointer',
                                     marginLeft: '0.5rem',
-                                    boxShadow: '0 0 15px rgba(255, 255, 255, 0.2)',
+                                    boxShadow: 'none',
                                     transition: 'transform 0.2s',
                                     outline: 'none'
                                 }}
@@ -61,7 +61,7 @@ export const HorizontalTabs: React.FC<TabListProps> = ({ tabs, activeTab, onTabC
                             style={{
                                 position: 'relative',
                                 padding: '0.75rem 1.5rem',
-                                color: isActive ? '#fff' : 'var(--color-text-muted)',
+                                color: isActive ? 'var(--color-surface-white)' : 'var(--color-on-surface-variant)',
                                 background: 'transparent',
                                 border: 'none',
                                 borderRadius: 'var(--radius-full)',
@@ -81,9 +81,9 @@ export const HorizontalTabs: React.FC<TabListProps> = ({ tabs, activeTab, onTabC
                                     style={{
                                         position: 'absolute',
                                         inset: 0,
-                                        background: 'rgba(0, 212, 255, 0.2)',
+                                        background: 'var(--color-primary)',
                                         borderRadius: 'var(--radius-full)',
-                                        border: '1px solid rgba(0, 212, 255, 0.4)',
+                                        border: '1px solid var(--color-primary)',
                                         zIndex: -1
                                     }}
                                 />

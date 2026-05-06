@@ -71,10 +71,10 @@ export const RoiSection: React.FC = () => {
     };
 
     return (
-        <section id="roi" style={{ padding: 'var(--spacing-16) 0', borderTop: '1px solid var(--color-border)', background: 'rgba(2, 8, 19, 0.4)' }}>
+        <section id="roi" style={{ padding: 'var(--spacing-16) 0', borderTop: '1px solid var(--color-border)', background: 'var(--color-surface)' }}>
             <div className="container" style={{ maxWidth: '100%', padding: '0 var(--spacing-4)' }}>
                 <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-12)' }}>
-                    <div style={{ color: '#00D4FF', fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: 'var(--spacing-4)' }}>
+                    <div style={{ color: 'var(--color-primary)', fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: 'var(--spacing-4)' }}>
                         Proof of Value
                     </div>
 
@@ -83,53 +83,51 @@ export const RoiSection: React.FC = () => {
                         fontWeight: 900,
                         letterSpacing: '-1px',
                         lineHeight: 1,
-                        background: 'linear-gradient(245deg, #00D4FF 0%, #10B981 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
+                        color: 'var(--color-primary)',
                         marginBottom: 'var(--spacing-3)',
                         fontFamily: 'var(--font-mono)'
                     }}>
                         42,567% ROI
                     </div>
 
-                    <div style={{ fontSize: 'var(--font-size-lg)', color: '#D1D5DB', marginBottom: 'var(--spacing-10)' }}>
+                    <div style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-on-surface-variant)', marginBottom: 'var(--spacing-10)' }}>
                         Over 5 years with &lt;2 week payback period
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', maxWidth: '1100px', margin: '0 auto' }}>
                         {/* Card 1 */}
                         <div className="glass-panel" style={{ padding: 'var(--spacing-6)' }}>
-                            <div style={{ fontSize: '2rem', fontWeight: 800, color: '#00D4FF', fontFamily: 'var(--font-mono)', marginBottom: 'var(--spacing-2)' }}>
+                            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', marginBottom: 'var(--spacing-2)' }}>
                                 $450k
                             </div>
-                            <div style={{ color: '#9CA3AF', fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>Year 1 Investment</div>
+                            <div style={{ color: 'var(--color-on-surface-variant)', fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>Year 1 Investment</div>
                         </div>
 
                         {/* Card 2 */}
                         <div className="glass-panel" style={{ padding: 'var(--spacing-6)' }}>
-                            <div style={{ fontSize: '2rem', fontWeight: 800, color: '#00D4FF', fontFamily: 'var(--font-mono)', marginBottom: 'var(--spacing-2)' }}>
+                            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', marginBottom: 'var(--spacing-2)' }}>
                                 $120k
                             </div>
-                            <div style={{ color: '#9CA3AF', fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>Annual Recurring Cost</div>
+                            <div style={{ color: 'var(--color-on-surface-variant)', fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>Annual Recurring Cost</div>
                         </div>
 
                         {/* Card 3 */}
                         <div className="glass-panel" style={{ padding: 'var(--spacing-6)' }}>
-                            <div style={{ fontSize: '2rem', fontWeight: 800, color: '#10B981', fontFamily: 'var(--font-mono)', marginBottom: 'var(--spacing-2)' }}>
+                            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', marginBottom: 'var(--spacing-2)' }}>
                                 $150M
                             </div>
-                            <div style={{ color: '#9CA3AF', fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>Annual Value Generated</div>
+                            <div style={{ color: 'var(--color-on-surface-variant)', fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>Annual Value Generated</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="glass-panel" style={{ overflowX: 'auto', marginBottom: 'var(--spacing-16)', maxWidth: '1100px', margin: '0 auto var(--spacing-16)' }}>
-                    <h3 style={{ padding: 'var(--spacing-6)', fontSize: '1.25rem', fontWeight: 700, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                    <h3 style={{ padding: 'var(--spacing-6)', fontSize: '1.25rem', fontWeight: 700, borderBottom: '1px solid var(--color-outline-variant)' }}>
                         $150M Value Breakdown Across 7 Functions
                     </h3>
                     <table style={{ width: '100%', minWidth: '800px', borderCollapse: 'collapse', textAlign: 'left' }}>
                         <thead>
-                            <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
+                            <tr style={{ borderBottom: '1px solid var(--color-outline-variant)', background: 'var(--color-surface-high)' }}>
                                 <th style={{ padding: 'var(--spacing-4)', color: 'var(--color-text-muted)', fontWeight: 600 }}>Enterprise Function</th>
                                 <th style={{ padding: 'var(--spacing-4)', color: 'var(--color-text-muted)', fontWeight: 600 }}>AI Agents</th>
                                 <th style={{ padding: 'var(--spacing-4)', color: 'var(--color-text-muted)', fontWeight: 600 }}>Annual Value</th>
@@ -147,18 +145,18 @@ export const RoiSection: React.FC = () => {
                                 { name: '6. Sales & Bid Management', agents: 3, val: '$25M', cap: '—', impact: '1,200 tenders tracked, 38% win rate' },
                                 { name: '7. IT & Technology', agents: 2, val: '$4.2M', cap: '—', impact: '180K SAP transactions/mo, 85% auto-res' },
                             ].map((row, idx) => (
-                                <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.02)', background: idx % 2 === 0 ? 'transparent' : 'rgba(0, 212, 255, 0.02)' }}>
+                                <tr key={idx} style={{ borderBottom: '1px solid var(--color-outline-variant)', background: idx % 2 === 0 ? 'transparent' : 'var(--color-surface-low)' }}>
                                     <td style={{ padding: 'var(--spacing-4)', fontWeight: 600 }}>{row.name}</td>
                                     <td style={{ padding: 'var(--spacing-4)' }}>{row.agents}</td>
-                                    <td style={{ padding: 'var(--spacing-4)', color: '#10B981', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>{row.val}</td>
+                                    <td style={{ padding: 'var(--spacing-4)', color: 'var(--color-primary)', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>{row.val}</td>
                                     <td style={{ padding: 'var(--spacing-4)' }}>{row.cap}</td>
                                     <td style={{ padding: 'var(--spacing-4)', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>{row.impact}</td>
                                 </tr>
                             ))}
-                            <tr style={{ background: 'rgba(16, 185, 129, 0.1)', borderTop: '2px solid rgba(16, 185, 129, 0.5)' }}>
+                            <tr style={{ background: 'var(--color-surface-high)', borderTop: '2px solid var(--color-primary)' }}>
                                 <td style={{ padding: 'var(--spacing-4)', fontWeight: 700 }}>TOTAL</td>
                                 <td style={{ padding: 'var(--spacing-4)', fontWeight: 700 }}>23 Agents</td>
-                                <td style={{ padding: 'var(--spacing-4)', color: '#10B981', fontWeight: 800, fontFamily: 'var(--font-mono)', fontSize: '1.2rem' }}>$150M</td>
+                                <td style={{ padding: 'var(--spacing-4)', color: 'var(--color-primary)', fontWeight: 800, fontFamily: 'var(--font-mono)', fontSize: '1.2rem' }}>$150M</td>
                                 <td style={{ padding: 'var(--spacing-4)', fontWeight: 700 }}>$22M</td>
                                 <td style={{ padding: 'var(--spacing-4)', color: 'var(--color-text-muted)' }}>Across 7 functions</td>
                             </tr>
@@ -171,30 +169,30 @@ export const RoiSection: React.FC = () => {
                     <div className="glass-panel" style={{ overflow: 'hidden' }}>
                         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                             <thead>
-                                <tr style={{ background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                                <tr style={{ background: 'var(--color-surface-high)', borderBottom: '1px solid var(--color-outline-variant)' }}>
                                     <th style={{ padding: 'var(--spacing-4)' }}>Component</th>
                                     <th style={{ padding: 'var(--spacing-4)' }}>Full Value</th>
-                                    <th style={{ padding: 'var(--spacing-4)', color: '#00D4FF' }}>Conservative (70%)</th>
+                                    <th style={{ padding: 'var(--spacing-4)', color: 'var(--color-primary)' }}>Conservative (70%)</th>
                                     <th style={{ padding: 'var(--spacing-4)' }}>Probability</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.02)' }}>
+                                <tr style={{ borderBottom: '1px solid var(--color-outline-variant)' }}>
                                     <td style={{ padding: 'var(--spacing-4)' }}>Annual Recurring Value</td>
                                     <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)' }}>$150M</td>
-                                    <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)', color: '#00D4FF', fontWeight: 600 }}>$107.5M</td>
+                                    <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)', color: 'var(--color-primary)', fontWeight: 600 }}>$107.5M</td>
                                     <td style={{ padding: 'var(--spacing-4)', color: 'var(--color-success)' }}>Guaranteed</td>
                                 </tr>
-                                <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.02)' }}>
+                                <tr style={{ borderBottom: '1px solid var(--color-outline-variant)' }}>
                                     <td style={{ padding: 'var(--spacing-4)' }}>Working Capital Unlocking</td>
                                     <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)' }}>$22M</td>
-                                    <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)', color: '#00D4FF', fontWeight: 600 }}>$28.8M</td>
+                                    <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)', color: 'var(--color-primary)', fontWeight: 600 }}>$28.8M</td>
                                     <td style={{ padding: 'var(--spacing-4)', color: 'var(--color-success)' }}>Guaranteed</td>
                                 </tr>
                                 <tr>
                                     <td style={{ padding: 'var(--spacing-4)' }}>One-Time (Asset Monetization)</td>
                                     <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)' }}>$60M</td>
-                                    <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)', color: '#00D4FF', fontWeight: 600 }}>$42M</td>
+                                    <td style={{ padding: 'var(--spacing-4)', fontFamily: 'var(--font-mono)', color: 'var(--color-primary)', fontWeight: 600 }}>$42M</td>
                                     <td style={{ padding: 'var(--spacing-4)', color: 'var(--color-warning)' }}>Market-dependent</td>
                                 </tr>
                             </tbody>
@@ -207,11 +205,11 @@ export const RoiSection: React.FC = () => {
 
                 {/* Interactive ROI Section */}
                 <div style={{
-                    background: '#040b16',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    background: 'var(--color-surface-high)',
+                    border: '1px solid var(--color-outline-variant)',
                     borderRadius: '16px',
                     padding: 'var(--spacing-8)',
-                    boxShadow: '0 4px 24px rgba(0, 0, 0, 0.5)',
+                    boxShadow: 'none',
                     maxWidth: '1100px',
                     margin: '0 auto'
                 }}>
@@ -219,7 +217,7 @@ export const RoiSection: React.FC = () => {
 
                         {/* Left Side: Inputs */}
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', justifyContent: 'center' }}>
-                            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#fff', marginBottom: 'var(--spacing-2)' }}>
+                            <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-primary)', marginBottom: 'var(--spacing-2)' }}>
                                 Interactive Platform Estimator
                             </h3>
                             <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginBottom: 'var(--spacing-4)' }}>
@@ -228,23 +226,23 @@ export const RoiSection: React.FC = () => {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="flex-col gap-1">
-                                    <label style={{ fontSize: '0.8rem', color: '#9CA3AF', fontWeight: 500 }}>Annual Rev ($M)</label>
+                                    <label style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)', fontWeight: 500 }}>Annual Rev ($M)</label>
                                     <div style={{ position: 'relative' }}>
-                                        <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#fff' }}>$</span>
+                                        <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-primary)' }}>$</span>
                                         <input
                                             type="number"
-                                            style={{ width: '100%', padding: '10px 10px 10px 24px', background: '#0a1120', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '6px', color: '#fff', fontFamily: 'var(--font-mono)', outline: 'none' }}
+                                            style={{ width: '100%', padding: '10px 10px 10px 24px', background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)', borderRadius: '6px', color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', outline: 'none' }}
                                             value={rev} onChange={(e) => setRev(parseFloat(e.target.value) || 0)}
                                         />
                                     </div>
                                 </div>
                                 <div className="flex-col gap-1">
-                                    <label style={{ fontSize: '0.8rem', color: '#9CA3AF', fontWeight: 500 }}>Procure Spend ($M)</label>
+                                    <label style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)', fontWeight: 500 }}>Procure Spend ($M)</label>
                                     <div style={{ position: 'relative' }}>
-                                        <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#fff' }}>$</span>
+                                        <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-primary)' }}>$</span>
                                         <input
                                             type="number"
-                                            style={{ width: '100%', padding: '10px 10px 10px 24px', background: '#0a1120', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '6px', color: '#fff', fontFamily: 'var(--font-mono)', outline: 'none' }}
+                                            style={{ width: '100%', padding: '10px 10px 10px 24px', background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)', borderRadius: '6px', color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', outline: 'none' }}
                                             value={spend} onChange={(e) => setSpend(parseFloat(e.target.value) || 0)}
                                         />
                                     </div>
@@ -253,18 +251,18 @@ export const RoiSection: React.FC = () => {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="flex-col gap-1">
-                                    <label style={{ fontSize: '0.8rem', color: '#9CA3AF', fontWeight: 500 }}>Total Employees</label>
+                                    <label style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)', fontWeight: 500 }}>Total Employees</label>
                                     <input
                                         type="number"
-                                        style={{ width: '100%', padding: '10px 12px', background: '#0a1120', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '6px', color: '#fff', fontFamily: 'var(--font-mono)', outline: 'none' }}
+                                        style={{ width: '100%', padding: '10px 12px', background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)', borderRadius: '6px', color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', outline: 'none' }}
                                         value={hc} onChange={(e) => setHc(parseFloat(e.target.value) || 0)}
                                     />
                                 </div>
                                 <div className="flex-col gap-1">
-                                    <label style={{ fontSize: '0.8rem', color: '#9CA3AF', fontWeight: 500 }}>Active Projects</label>
+                                    <label style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)', fontWeight: 500 }}>Active Projects</label>
                                     <input
                                         type="number"
-                                        style={{ width: '100%', padding: '10px 12px', background: '#0a1120', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '6px', color: '#fff', fontFamily: 'var(--font-mono)', outline: 'none' }}
+                                        style={{ width: '100%', padding: '10px 12px', background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)', borderRadius: '6px', color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', outline: 'none' }}
                                         value={projects} onChange={(e) => setProjects(parseFloat(e.target.value) || 0)}
                                     />
                                 </div>
@@ -272,18 +270,18 @@ export const RoiSection: React.FC = () => {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="flex-col gap-1">
-                                    <label style={{ fontSize: '0.8rem', color: '#9CA3AF', fontWeight: 500 }}>Debtor Days</label>
+                                    <label style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)', fontWeight: 500 }}>Debtor Days</label>
                                     <input
                                         type="number"
-                                        style={{ width: '100%', padding: '10px 12px', background: '#0a1120', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '6px', color: '#fff', fontFamily: 'var(--font-mono)', outline: 'none' }}
+                                        style={{ width: '100%', padding: '10px 12px', background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)', borderRadius: '6px', color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', outline: 'none' }}
                                         value={days} onChange={(e) => setDays(parseFloat(e.target.value) || 0)}
                                     />
                                 </div>
                                 <div className="flex-col gap-1">
-                                    <label style={{ fontSize: '0.8rem', color: '#9CA3AF', fontWeight: 500 }}>Invoice Vol/Month</label>
+                                    <label style={{ fontSize: '0.8rem', color: 'var(--color-on-surface-variant)', fontWeight: 500 }}>Invoice Vol/Month</label>
                                     <input
                                         type="number"
-                                        style={{ width: '100%', padding: '10px 12px', background: '#0a1120', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '6px', color: '#fff', fontFamily: 'var(--font-mono)', outline: 'none' }}
+                                        style={{ width: '100%', padding: '10px 12px', background: 'var(--color-surface)', border: '1px solid var(--color-outline-variant)', borderRadius: '6px', color: 'var(--color-primary)', fontFamily: 'var(--font-mono)', outline: 'none' }}
                                         value={invoices} onChange={(e) => setInvoices(parseFloat(e.target.value) || 0)}
                                     />
                                 </div>
@@ -292,61 +290,61 @@ export const RoiSection: React.FC = () => {
 
                         {/* Right Side: Results */}
                         <div className="flex-col justify-between" style={{
-                            background: '#0f1f31',
-                            border: '1px solid rgba(255, 255, 255, 0.05)',
+                            background: 'var(--color-surface-highest)',
+                            border: '1px solid var(--color-outline-variant)',
                             borderRadius: '12px',
                             padding: 'var(--spacing-8)'
                         }}>
                             <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-6)' }}>
-                                <h4 style={{ color: '#9CA3AF', fontWeight: 400, fontSize: '0.95rem', marginBottom: 'var(--spacing-2)' }}>
+                                <h4 style={{ color: 'var(--color-on-surface-variant)', fontWeight: 400, fontSize: '0.95rem', marginBottom: 'var(--spacing-2)' }}>
                                     Estimated Annual Value (Conservative)
                                 </h4>
                                 <motion.div
                                     key={results.total}
                                     initial={{ scale: 0.95, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}
-                                    style={{ fontSize: '3.5rem', fontWeight: 800, color: '#10B981', letterSpacing: '-1px', lineHeight: 1.1, fontFamily: 'var(--font-mono)' }}
+                                    style={{ fontSize: '3.5rem', fontWeight: 800, color: 'var(--color-primary)', letterSpacing: '-1px', lineHeight: 1.1, fontFamily: 'var(--font-mono)' }}
                                 >
                                     {formatM(results.total)}
                                 </motion.div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-2 text-sm text-gray-300 font-mono" style={{ marginBottom: 'var(--spacing-6)' }}>
-                                <div className="flex justify-between items-center p-2 rounded bg-black/20">
-                                    <span>Procurement</span> <span className="text-white font-bold">{formatM(results.proc)}</span>
+                            <div className="grid grid-cols-2 gap-2 text-sm font-mono" style={{ marginBottom: 'var(--spacing-6)', color: 'var(--color-on-surface-variant)' }}>
+                                <div className="flex justify-between items-center p-2 rounded" style={{ background: 'var(--color-surface-low)' }}>
+                                    <span>Procurement</span> <span className="font-bold" style={{ color: 'var(--color-primary)' }}>{formatM(results.proc)}</span>
                                 </div>
-                                <div className="flex justify-between items-center p-2 rounded bg-black/20">
-                                    <span>WC Unlocked</span> <span className="text-white font-bold">{formatM(results.wc)}</span>
+                                <div className="flex justify-between items-center p-2 rounded" style={{ background: 'var(--color-surface-low)' }}>
+                                    <span>WC Unlocked</span> <span className="font-bold" style={{ color: 'var(--color-primary)' }}>{formatM(results.wc)}</span>
                                 </div>
-                                <div className="flex justify-between items-center p-2 rounded bg-black/20">
-                                    <span>Finance</span> <span className="text-white font-bold">{formatM(results.fin)}</span>
+                                <div className="flex justify-between items-center p-2 rounded" style={{ background: 'var(--color-surface-low)' }}>
+                                    <span>Finance</span> <span className="font-bold" style={{ color: 'var(--color-primary)' }}>{formatM(results.fin)}</span>
                                 </div>
-                                <div className="flex justify-between items-center p-2 rounded bg-black/20">
-                                    <span>Compliance</span> <span className="text-white font-bold">{formatM(results.comp)}</span>
+                                <div className="flex justify-between items-center p-2 rounded" style={{ background: 'var(--color-surface-low)' }}>
+                                    <span>Compliance</span> <span className="font-bold" style={{ color: 'var(--color-primary)' }}>{formatM(results.comp)}</span>
                                 </div>
-                                <div className="flex justify-between items-center p-2 rounded bg-black/20">
-                                    <span>Ops/Projects</span> <span className="text-white font-bold">{formatM(results.ops)}</span>
+                                <div className="flex justify-between items-center p-2 rounded" style={{ background: 'var(--color-surface-low)' }}>
+                                    <span>Ops/Projects</span> <span className="font-bold" style={{ color: 'var(--color-primary)' }}>{formatM(results.ops)}</span>
                                 </div>
-                                <div className="flex justify-between items-center p-2 rounded bg-black/20">
-                                    <span>Sales</span> <span className="text-white font-bold">{formatM(results.sales)}</span>
+                                <div className="flex justify-between items-center p-2 rounded" style={{ background: 'var(--color-surface-low)' }}>
+                                    <span>Sales</span> <span className="font-bold" style={{ color: 'var(--color-primary)' }}>{formatM(results.sales)}</span>
                                 </div>
-                                <div className="flex justify-between items-center p-2 rounded bg-black/20 col-span-2">
-                                    <span>HR & IT</span> <span className="text-white font-bold">{formatM(results.hrit)}</span>
+                                <div className="flex justify-between items-center p-2 rounded col-span-2" style={{ background: 'var(--color-surface-low)' }}>
+                                    <span>HR & IT</span> <span className="font-bold" style={{ color: 'var(--color-primary)' }}>{formatM(results.hrit)}</span>
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-3 gap-3" style={{ marginBottom: 'var(--spacing-6)' }}>
-                                <div className="text-center p-3 rounded" style={{ background: 'rgba(0, 212, 255, 0.1)', border: '1px solid rgba(0, 212, 255, 0.2)' }}>
-                                    <div className="text-xs text-gray-400 mb-1">Payback Period</div>
-                                    <div className="font-bold font-mono text-cyan-400">{results.payback.toFixed(1)} wks</div>
+                                <div className="text-center p-3 rounded" style={{ background: 'var(--color-surface-low)', border: '1px solid var(--color-outline-variant)' }}>
+                                    <div className="text-xs mb-1" style={{ color: 'var(--color-on-surface-variant)' }}>Payback Period</div>
+                                    <div className="font-bold font-mono" style={{ color: 'var(--color-primary)' }}>{results.payback.toFixed(1)} wks</div>
                                 </div>
-                                <div className="text-center p-3 rounded" style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
-                                    <div className="text-xs text-gray-400 mb-1">3-Year NPV</div>
-                                    <div className="font-bold font-mono text-emerald-400">{formatM(results.threeYearNPV)}</div>
+                                <div className="text-center p-3 rounded" style={{ background: 'var(--color-surface-low)', border: '1px solid var(--color-outline-variant)' }}>
+                                    <div className="text-xs mb-1" style={{ color: 'var(--color-on-surface-variant)' }}>3-Year NPV</div>
+                                    <div className="font-bold font-mono" style={{ color: 'var(--color-primary)' }}>{formatM(results.threeYearNPV)}</div>
                                 </div>
-                                <div className="text-center p-3 rounded" style={{ background: 'rgba(249, 92, 246, 0.1)', border: '1px solid rgba(249, 92, 246, 0.2)' }}>
-                                    <div className="text-xs text-gray-400 mb-1">5-Year ROI</div>
-                                    <div className="font-bold font-mono text-purple-400">{results.fiveYearROI.toLocaleString('en-IN', { maximumFractionDigits: 0 })}%</div>
+                                <div className="text-center p-3 rounded" style={{ background: 'var(--color-surface-low)', border: '1px solid var(--color-outline-variant)' }}>
+                                    <div className="text-xs mb-1" style={{ color: 'var(--color-on-surface-variant)' }}>5-Year ROI</div>
+                                    <div className="font-bold font-mono" style={{ color: 'var(--color-primary)' }}>{results.fiveYearROI.toLocaleString('en-IN', { maximumFractionDigits: 0 })}%</div>
                                 </div>
                             </div>
 
